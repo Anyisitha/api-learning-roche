@@ -1,0 +1,25 @@
+name: Deploy laravel
+on:
+  push:
+    branches:
+      - master
+  pull-request:
+    branches:
+      - master
+
+jobs:
+  web-deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get latest code
+        uses: actions/checkout@v2
+      - name: Install dependiencies
+        uses: composer install --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+      - name: Sync files
+        uses: SamKirkland/FTP-Deploy-Action@4.1.0
+        with:
+          server: files.000webhost.com
+          username: dev-api-learning-roche
+          password: 2119Roche
+          server-dir: public_html/
