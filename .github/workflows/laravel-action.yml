@@ -33,12 +33,6 @@ jobs:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
       run: vendor/bin/phpunit
-    - name: Sync files
-    - uses: SamKirkland/FTP-Deploy-Action@4.1.0
-      with:
-          server: files.000webhost.com
-          username: dev-api-learning-roche
-          password: 2119Roche
-          server-dir: public_html/
+   
     
       
